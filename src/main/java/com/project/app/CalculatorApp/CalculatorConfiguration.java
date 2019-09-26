@@ -7,7 +7,6 @@ import com.project.app.CalculatorApp.domain.Problem;
 import com.project.app.CalculatorApp.domain.User;
 import com.project.app.CalculatorApp.domain.Repository.AttemptRepository;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
