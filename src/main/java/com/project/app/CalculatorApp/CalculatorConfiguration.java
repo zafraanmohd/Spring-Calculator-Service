@@ -19,8 +19,6 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @Configuration
 @EnableWebMvc
 public class CalculatorConfiguration extends WebSecurityConfigurerAdapter {
-
-    @Autowired
     private AttemptRepository attemptRepo;
 
     public CalculatorConfiguration(AttemptRepository attemptRepo) {
