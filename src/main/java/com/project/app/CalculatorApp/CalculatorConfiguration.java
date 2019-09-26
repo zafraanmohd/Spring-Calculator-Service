@@ -2,10 +2,10 @@ package com.project.app.CalculatorApp;
 
 import java.util.Arrays;
 
+import com.project.app.CalculatorApp.domain.Attempt;
 import com.project.app.CalculatorApp.domain.Problem;
 import com.project.app.CalculatorApp.domain.User;
-import com.project.app.CalculatorApp.domain.Repository.ProblemRepository;
-import com.project.app.CalculatorApp.domain.Repository.UserRepo;
+import com.project.app.CalculatorApp.domain.Repository.AttemptRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationRunner;
@@ -20,6 +20,13 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @EnableWebMvc
 public class CalculatorConfiguration extends WebSecurityConfigurerAdapter {
 
+    @Autowired
+    private AttemptRepository attemptRepo;
+
+    public CalculatorConfiguration(AttemptRepository attemptRepo) {
+        this.attemptRepo = attemptRepo;
+    }
+
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
     }
 
@@ -30,37 +37,18 @@ public class CalculatorConfiguration extends WebSecurityConfigurerAdapter {
         http.headers().frameOptions().disable();
     }
 
-    @Autowired
-    UserRepo userRepo;
-
-    @Autowired
-    ProblemRepository problemRepo;
-
     @Bean
     public ApplicationRunner bootStrap() {
         return args -> {
-            User user = new User("Josh");
-            User user1 = new User("Ant");
+            User u1 = new User("Ant");
+            Problem p1 = new Problem(u1, 2, 3);
+            Attempt a1 = new Attempt(p1, 5);
+            Attempt a2 = new Attempt(p1, 6);
+            attemptRepo.saveAll(Arrays.asList(a1, a2));
+            for (Attempt a : attemptRepo.findAllAttempts(u1.getId())) {
+                System.out.println(a.getAttempt() + ": " + a.getResult());
+            }
 
-            System.out.println(user.getUsername());
-            System.out.println(user1.getUsername());
-
-            Problem problem = new Problem(2, 3);
-            Problem problem2 = new Problem(1, 2);
-
-            user.getProblems().add(problem);
-            user.getProblems().add(problem2);
-
-            problem.setUser(user);
-            problem2.setUser(user);
-
-            userRepo.saveAll(Arrays.asList(user, user1));
-
-            System.out.println(problem.getResult());
-            System.out.println(problem2.getResult());
-
-            System.out.println(user.getProblems().get(0).doAttempt(5));
-            System.out.println(user.getProblems().get(0).doAttempt(6));
         };
     }
 }
