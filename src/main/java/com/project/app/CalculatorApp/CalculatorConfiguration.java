@@ -1,13 +1,7 @@
 package com.project.app.CalculatorApp;
 
-import java.util.Arrays;
-
-import com.project.app.CalculatorApp.domain.Attempt;
 import com.project.app.CalculatorApp.domain.Problem;
 import com.project.app.CalculatorApp.domain.User;
-import com.project.app.CalculatorApp.domain.Repository.AttemptRepository;
-import com.project.app.CalculatorApp.domain.Repository.ProblemRepository;
-import com.project.app.CalculatorApp.domain.Repository.UserRepository;
 import com.project.app.CalculatorApp.service.UserService;
 
 import org.springframework.boot.ApplicationRunner;
@@ -22,16 +16,19 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @EnableWebMvc
 public class CalculatorConfiguration extends WebSecurityConfigurerAdapter {
     private UserService userService;
-    private AttemptRepository attemptRepo;
-    ProblemRepository problemRepo;
-    UserRepository userRepo;
+    // private AttemptRepository attemptRepo;
+    // ProblemRepository problemRepo;
+    // UserRepository userRepo;
 
-    public CalculatorConfiguration(UserService userService, AttemptRepository attemptRepo, UserRepository userRepo,
-            ProblemRepository problemRepo) {
+    public CalculatorConfiguration(UserService userService
+    /*
+     * , AttemptRepository attemptRepo, UserRepository userRepo, ProblemRepository
+     * problemRepo
+     */) {
         this.userService = userService;
-        this.attemptRepo = attemptRepo;
-        this.problemRepo = problemRepo;
-        this.userRepo = userRepo;
+        // this.attemptRepo = attemptRepo;
+        // this.problemRepo = problemRepo;
+        // this.userRepo = userRepo;
     }
 
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {

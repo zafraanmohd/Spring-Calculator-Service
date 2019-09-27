@@ -13,6 +13,8 @@ import com.project.app.CalculatorApp.domain.Attempt;;
 public interface UserService {
     User createUser(String name);
 
+    User getUser(Long user_id);
+
     Problem addProblem(User user);
 
     boolean addAttempt(Problem problem, int attempt);

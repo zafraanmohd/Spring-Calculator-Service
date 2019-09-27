@@ -63,4 +63,11 @@ public class UserServiceImplementation implements UserService {
             return attemptRepo.findAllByProblemId(problem.getId());
         return null;
     }
+
+    @Override
+    public User getUser(Long user_id) {
+        if (userRepo.existsById(user_id))
+            return userRepo.findById(user_id).get();
+        return null;
+    }
 }
