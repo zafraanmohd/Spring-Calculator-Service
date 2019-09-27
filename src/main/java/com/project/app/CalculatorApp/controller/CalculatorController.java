@@ -9,10 +9,8 @@ import com.project.app.CalculatorApp.domain.Repository.AttemptRepository;
 import com.project.app.CalculatorApp.domain.Repository.ProblemRepository;
 import com.project.app.CalculatorApp.domain.Repository.UserRepository;
 
-import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
