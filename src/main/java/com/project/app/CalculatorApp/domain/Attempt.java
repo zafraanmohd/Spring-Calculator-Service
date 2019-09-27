@@ -20,7 +20,7 @@ public class Attempt {
     private int attempt;
     private boolean result;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "problem_id")
     private Problem problem;
 

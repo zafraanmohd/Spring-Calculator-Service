@@ -23,7 +23,7 @@ public class Problem {
     private int factor_b;
     private int result;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 
