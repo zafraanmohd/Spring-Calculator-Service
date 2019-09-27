@@ -45,6 +45,7 @@ public class CalculatorConfiguration extends WebSecurityConfigurerAdapter {
             for (Attempt a : attemptRepo.findAllAttempts(u1.getId())) {
                 System.out.println(a.getAttempt() + ": " + a.getResult());
             }
+            System.out.println(attemptRepo.testQuery(new Long(2)).get(0).getResult());
 
         };
     }

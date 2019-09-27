@@ -9,7 +9,10 @@ import com.project.app.CalculatorApp.domain.Repository.AttemptRepository;
 import com.project.app.CalculatorApp.domain.Repository.ProblemRepository;
 import com.project.app.CalculatorApp.domain.Repository.UserRepository;
 
+import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -27,6 +30,32 @@ public class CalculatorController {
     @GetMapping("users/all")
     public List<User> allUsers() {
         return userRepo.findAll();
+    }
+
+    @GetMapping("users/{id}")
+    public User getUser(@PathVariable("id") String id) {
+        if (userRepo.existsById(new Long(id)))
+            return userRepo.findById(new Long(id)).get();
+        return null;
+    }
+
+    @GetMapping("users/{id}/problems")
+    public List<Problem> getUserProblems(@PathVariable("id") String id) {
+        return problemRepo.findByUserId(new Long(id));
+    }
+
+    @GetMapping("users/{uid}/problems/{pid}")
+    public Problem getUserProblemById(@PathVariable("uid") String uid, @PathVariable("pid") String pid) {
+        if (problemRepo.existsById(new Long(pid)))
+            return problemRepo.findById(new Long(pid)).get();
+        return null;
+    }
+
+    @GetMapping("users/{uid}/problems/{pid}/attempts")
+    public List<Attempt> getUserProblemAttempts(@PathVariable("uid") String uid, @PathVariable("pid") String pid) {
+        if (problemRepo.existsById(new Long(pid)))
+            return attemptRepo.findAllByProblemId(new Long(pid));
+        return null;
     }
 
     @GetMapping("problems/all")
