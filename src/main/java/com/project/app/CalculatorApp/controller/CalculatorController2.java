@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
-import com.project.app.CalculatorApp.domain.Attempt;
 import com.project.app.CalculatorApp.domain.Problem;
 import com.project.app.CalculatorApp.domain.User;
 import com.project.app.CalculatorApp.service.UserService;
