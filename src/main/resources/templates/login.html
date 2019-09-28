@@ -14,10 +14,10 @@
     </style>
 
     <div align="center">
-        <form class="form-inline" th:action="@{/login}" method="post" data-uid="3f062f6e87" data-format="inline"
-            data-version="5">
-            <input name="fields[first_name]" type="text" placeholder="Your first name" />
-            <button type="submit" data-element="submit">Join</button>
+        <form class="form-inline" method="post" data-uid="3f062f6e87" data-format="inline" data-version="5">
+            <input name="name" type="text" placeholder="Login or Register with name" />
+            <button type="submit" th:formaction="@{/login/}" data-element="submit">Login</button>
+            <button type="submit" th:formaction="@{/register/}" data-element="submit">Register</button>
         </form>
     </div>
 </body>

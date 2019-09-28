@@ -1,4 +1,4 @@
-package com.project.app.CalculatorApp;
+package com.project.app.CalculatorApp.configuration;
 
 import com.project.app.CalculatorApp.domain.Problem;
 import com.project.app.CalculatorApp.domain.User;
@@ -58,11 +58,8 @@ public class CalculatorConfiguration extends WebSecurityConfigurerAdapter {
             User user = userService.createUser("Hobbs");
             Problem problem = userService.addProblem(user);
             System.out.println(userService.addAttempt(problem, 6));
-            System.out.println(userService.addAttempt(problem, 7));
-            System.out.println(userService.addAttempt(problem, 8));
-            System.out.println(userService.addAttempt(problem, 9));
-            System.out.println(userService.addAttempt(problem, 1));
-
+            System.out.println(userService.addAttempt(problem, new Integer(1)));
+            System.out.println("testing: " + (new Integer(1) == 1));
             System.out.println(userService.getAllUsers().get(0).getName());
             System.out.println(userService.getAllUserProblems(user).get(0).getResult());
             System.out.println(userService.getAllAttempts(problem).get(0).getResult());

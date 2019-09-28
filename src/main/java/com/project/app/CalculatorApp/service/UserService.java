@@ -13,9 +13,13 @@ import com.project.app.CalculatorApp.domain.Attempt;;
 public interface UserService {
     User createUser(String name);
 
+    User getUser(String name);
+
     User getUser(Long user_id);
 
     Problem addProblem(User user);
+
+    Problem getProblem(Long pid);
 
     boolean addAttempt(Problem problem, int attempt);
 
@@ -24,4 +28,6 @@ public interface UserService {
     List<Problem> getAllUserProblems(User user);
 
     List<Attempt> getAllAttempts(Problem problem);
+
+    List<?> getAllProblemsByAll();
 }

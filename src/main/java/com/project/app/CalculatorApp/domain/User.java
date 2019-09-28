@@ -7,8 +7,10 @@ import javax.persistence.Id;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter
+@Setter
 @Entity
 @NoArgsConstructor
 public class User {
@@ -16,6 +18,7 @@ public class User {
     @GeneratedValue
     @Column(name = "user_id")
     Long id;
+    @Column(unique = true, nullable = false)
     private String name;
 
     public User(String name) {

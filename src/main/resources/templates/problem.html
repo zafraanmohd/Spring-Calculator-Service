@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    Here is the problem.
+    <div>
+        <span th:text="${message}"></span>
+    </div>
+    <form th:action="@{/createAttempt/}" th:object="${problem}" method="post">
+        Factor A:<label for="factor_a" th:text="${problem.getFactor_a()}"></label>
+        * Factor B:<label for="factor_b" th:text="${problem.getFactor_b()}"></label>
+        <br>
+        <input type="text" name="attempt" id="attempt">
+        <button type="submit">Submit!</button>
+    </form>
+</body>
+
+</html>

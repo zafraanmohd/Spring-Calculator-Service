@@ -17,4 +17,7 @@ public interface AttemptRepository extends JpaRepository<Attempt, Long> {
 
     @Query("SELECT a FROM Attempt a WHERE a.problem.id=:p_id")
     List<Attempt> testQuery(@Param("p_id") Long p_id);
+
+    @Query("select a.problem.user.name, sum(1) from Attempt a where a.result = true group by a.problem.user.name")
+    List<?> findAllByUser();
 }

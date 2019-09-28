@@ -70,4 +70,16 @@ public class UserServiceImplementation implements UserService {
             return userRepo.findById(user_id).get();
         return null;
     }
+
+    public User getUser(String name) {
+        return userRepo.findByName(name);
+    }
+
+    public Problem getProblem(Long pid) {
+        return problemRepo.findById(pid).get();
+    }
+
+    public List<?> getAllProblemsByAll() {
+        return attemptRepo.findAllByUser();
+    }
 }

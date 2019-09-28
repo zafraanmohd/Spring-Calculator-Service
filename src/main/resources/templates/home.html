@@ -9,7 +9,19 @@
 </head>
 
 <body>
-
+    This is home!
+    Login successful;
+    <form th:action="@{/createProblem/}" method="get">
+        <button type="submit">Create Random Problem!</button>
+    </form>
+    Your problems!
+    <ol>
+        <li th:each=" problem : ${problems}">
+            <span th:text="${problem.getFactor_a()}"></span>
+            <span th:text="${problem.getFactor_a()}"></span>
+        </li>
+    </ol>
+    <a href="/leaderboard/">Check Leaderboard!</a>
 </body>
 
 </html>
